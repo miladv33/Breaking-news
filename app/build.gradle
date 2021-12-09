@@ -72,6 +72,7 @@ dependencies {
     implementation(AndroidLib.room_coroutine)
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$Versions.kotlin"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.android.tools.build:aapt2:4.1.0-6503028'
     kapt(AndroidLib.room_compiler)
 
     // Kotlin
