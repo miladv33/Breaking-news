@@ -79,6 +79,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$Versions.android_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$Versions.android_navigation"
 
+    implementation 'com.thefinestartist:finestwebview:1.2.7'
+
     implementation(AndroidLib.viewmodel_ktx)
     implementation(AndroidLib.viewmodel_runtime)
     implementation(AndroidLib.viewmodel_extension)

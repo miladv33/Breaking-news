@@ -13,6 +13,7 @@ import com.pratama.baseandroid.domain.entity.News
 import com.pratama.baseandroid.domain.entity.toDto
 import com.pratama.baseandroid.ui.homepage.rvitem.NewsItem
 import com.pratama.baseandroid.utility.ThreadInfoLogger
+import com.thefinestartist.finestwebview.FinestWebView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,11 +62,7 @@ class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsIte
     }
 
     override fun onNewsSelected(news: News) {
-        findNavController().navigate(
-            ListNewsFragmentDirections.actionListNewsFragmentToDetailNewsFragment(
-                news.toDto()
-            )
-        )
+        FinestWebView.Builder(requireContext()).show(news.url)
     }
 
     private fun setListener(binding: FragmentListNewsBinding) {
