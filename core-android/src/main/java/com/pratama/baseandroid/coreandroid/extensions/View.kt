@@ -4,6 +4,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 fun View.toVisible() {
@@ -17,5 +18,5 @@ fun View.toGone() {
 fun ImageView.loadFromUrl(url: String) {
     if (url.isEmpty()) return
 
-    Picasso.get().load(url).into(this)
+    Picasso.get().load(url).networkPolicy(NetworkPolicy.OFFLINE).into(this)
 }
