@@ -7,7 +7,7 @@ import com.pratama.baseandroid.data.datasource.local.entity.NewsEntity
 
 @Dao
 interface NewsDao {
-    @Query("SELECT * FROM News")
+    @Query("SELECT * FROM NewsEntity")
     suspend fun getAllNews(): List<NewsEntity>
 
     @Insert

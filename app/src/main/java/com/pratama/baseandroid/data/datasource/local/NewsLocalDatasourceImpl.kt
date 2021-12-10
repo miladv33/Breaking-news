@@ -3,8 +3,8 @@ package com.pratama.baseandroid.data.datasource.local
 import com.github.ajalt.timberkt.d
 import com.pratama.baseandroid.data.datasource.local.db.AppDatabase
 import com.pratama.baseandroid.data.datasource.local.entity.toNews
-import com.pratama.baseandroid.data.datasource.local.entity.toNewsEntity
 import com.pratama.baseandroid.domain.entity.News
+import com.pratama.baseandroid.domain.entity.toNewsEntity
 
 class NewsLocalDatasourceImpl(private val appDatabase: AppDatabase) : NewsLocalDatasource {
 

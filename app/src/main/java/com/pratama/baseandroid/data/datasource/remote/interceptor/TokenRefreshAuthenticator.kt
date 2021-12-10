@@ -16,7 +16,7 @@ class TokenRefreshAuthenticator : Authenticator {
     private fun Response.createSignedRequest(): Request? = try {
         // todo: setup auth repo
 //        val accessToken = authenticationRepository.fetchFreshAccessToken()
-        request.signWithToken("my_token")
+        request.signWithToken("DLopP7R8XGgIGYGE_eilN0Pfukphag3_WzDy5Ko6VN7xyKh4")
     } catch (error: IOException) {
         e { "Failed to resign request" }
         null

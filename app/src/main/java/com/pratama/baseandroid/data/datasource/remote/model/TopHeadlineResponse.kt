@@ -5,12 +5,12 @@ import com.pratama.baseandroid.domain.entity.News
 data class TopHeadlineResponse(
     val status: String,
     val totalResults: Int,
-    val articles: List<NewsResponse>
+    val news: List<NewsResponse>
 )
 
 fun TopHeadlineResponse.toNewsList(): List<News> {
     val listNews = mutableListOf<News>()
-    articles.map {
+    news.map {
         listNews.add(toNews((it)))
     }
     return listNews

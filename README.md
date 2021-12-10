@@ -14,7 +14,7 @@ MVVM Base Android Kotlin Project
 - Coroutine
 - Retrofit / OkHttp
 - Gson
-- . as Recyclerview lib
+- Groupie as Recyclerview lib
 - sdp ssp
 - Hilt as Dependency Injection lib
 - Picasso as Image loader

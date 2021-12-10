@@ -16,8 +16,8 @@ class NewsItem(private val news: News, val listener: NewsItem.NewsListener) :
 
     override fun bind(viewBinding: RvItemNewsBinding, position: Int) = with(viewBinding) {
         newsTitle.text = news.title
-        newsThumbnail.loadFromUrl(news.urlToImage)
-        newsSource.text = "Source ${news.source.name}"
+        newsThumbnail.loadFromUrl(news.image)
+        newsSource.text = "Source ${news.author}"
 
         this.root.setOnClickListener { listener.onNewsSelected(news) }
     }
