@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ajalt.timberkt.d
+import com.pratama.baseandroid.R
 import com.pratama.baseandroid.coreandroid.base.BaseFragmentBinding
 import com.pratama.baseandroid.coreandroid.extensions.toGone
 import com.pratama.baseandroid.coreandroid.extensions.toVisible
@@ -17,6 +18,7 @@ import com.thefinestartist.finestwebview.FinestWebView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
+import render.animations.Bounce
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -62,7 +64,9 @@ class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsIte
     }
 
     override fun onNewsSelected(news: News) {
-        FinestWebView.Builder(requireContext()).show(news.url)
+        FinestWebView.Builder(requireContext())
+            .setCustomAnimations(R.anim.exit_to_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left)
+            .show(news.url)
     }
 
     private fun setListener(binding: FragmentListNewsBinding) {
