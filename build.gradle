@@ -24,6 +24,7 @@ allprojects {
     apply from: "$rootDir/config/detekt.gradle"
 
     repositories {
+        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
         jcenter()
