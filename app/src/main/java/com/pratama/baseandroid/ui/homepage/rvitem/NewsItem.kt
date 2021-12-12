@@ -5,6 +5,7 @@ import com.pratama.baseandroid.R
 import com.pratama.baseandroid.coreandroid.extensions.loadFromUrl
 import com.pratama.baseandroid.databinding.RvItemNewsBinding
 import com.pratama.baseandroid.domain.entity.News
+import com.pratama.baseandroid.utility.getNewsDate
 import com.xwray.groupie.viewbinding.BindableItem
 
 class NewsItem(private val news: News, val listener: NewsItem.NewsListener) :
@@ -15,10 +16,10 @@ class NewsItem(private val news: News, val listener: NewsItem.NewsListener) :
     }
 
     override fun bind(viewBinding: RvItemNewsBinding, position: Int) = with(viewBinding) {
-        newsTitle.text = news.title
-        newsThumbnail.loadFromUrl(news.image)
-        newsSource.text = "Source ${news.author}"
-
+        newsImage.loadFromUrl(news.image)
+        titleTextView.text = news.title
+        descriptionTextView.text = news.description
+        dateTextView.text = getNewsDate(news.published)
         this.root.setOnClickListener { listener.onNewsSelected(news) }
     }
 

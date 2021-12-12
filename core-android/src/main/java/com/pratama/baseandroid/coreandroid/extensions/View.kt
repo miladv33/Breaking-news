@@ -18,5 +18,5 @@ fun View.toGone() {
 fun ImageView.loadFromUrl(url: String) {
     if (url.isEmpty()) return
 
-    Picasso.get().load(url).networkPolicy(NetworkPolicy.OFFLINE).into(this)
+    Picasso.get().load(url).into(this)
 }

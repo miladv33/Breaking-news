@@ -32,7 +32,7 @@ class SplashActivity : BaseActivityBinding<ActivitySplashBinding>() {
         }
     }
 
-    fun animateViews(binding: ActivitySplashBinding) {
+    private fun animateViews(binding: ActivitySplashBinding) {
         val render = Render(this)
         // Set Animation
         render.setAnimation(Fade().In(binding.imageView))
