@@ -14,6 +14,8 @@ import com.pratama.baseandroid.domain.entity.News
 import com.pratama.baseandroid.domain.entity.toDto
 import com.pratama.baseandroid.ui.homepage.rvitem.NewsItem
 import com.pratama.baseandroid.utility.ThreadInfoLogger
+import com.pratama.baseandroid.utility.lottie.BindingLottie.setGif
+import com.pratama.baseandroid.utility.lottie.GifEnum
 import com.thefinestartist.finestwebview.FinestWebView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -45,11 +47,13 @@ class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsIte
             when (state) {
 
                 is ListNewsViewModel.ListNewsState.Loading -> {
-                    loadingIndicator.toVisible()
+                    animationView.toVisible()
+                    animationView.setGif(GifEnum.LOADING)
                 }
 
                 is ListNewsViewModel.ListNewsState.NewsLoaded -> {
-                    loadingIndicator.toGone()
+                    animationView.toGone()
+                    animationView.pauseAnimation()
                     swipeRefreshLayout.isRefreshing = false
 
                     ThreadInfoLogger.logThreadInfo("show news viewmodel")

@@ -25,6 +25,8 @@ object Versions {
     const val android_navigation = "2.3.2"
     const val detekt = "1.15.0"
     const val mockk = "1.10.5"
+    const val lottieVersion = "3.4.0"
+
 }
 
 
@@ -47,6 +49,7 @@ object AndroidLib {
     val groupie = "com.xwray:groupie:${Versions.groupie}"
     val groupie_viewbinding = "com.xwray:groupie-viewbinding:${Versions.groupie}"
     val room = "androidx.room:room-runtime:${Versions.room}"
+    val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
     val room_compiler = "androidx.room:room-compiler:${Versions.room}"
     val room_coroutine = "androidx.room:room-ktx:${Versions.room}"
     const val viewmodel_ktx =
