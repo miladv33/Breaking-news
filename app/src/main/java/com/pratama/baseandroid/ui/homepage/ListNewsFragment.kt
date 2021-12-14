@@ -1,5 +1,6 @@
 package com.pratama.baseandroid.ui.homepage
 
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +44,7 @@ class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsIte
         // setupRecyclerview
         rvListNews.layoutManager = LinearLayoutManager(requireActivity())
         rvListNews.adapter = listNewsAdapter
-
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         setListener(binding)
 
         callData()
@@ -93,12 +94,14 @@ class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsIte
                 Color.RED
             ).build()
         )
+        menu.select(R.id.news)
         menu.onItemSelectedListener = object :OnItemClickListener{
             override fun invoke(v: View, menuItem: MenuItem, byUser: Boolean) {
                 if (menuItem.id == R.id.live) {
                     findNavController().navigate(
                         ListNewsFragmentDirections.actionListNewsFragmentToLiveFragment()
                     )
+                    menu.select(R.id.news)
                 }
             }
 

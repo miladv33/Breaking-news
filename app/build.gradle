@@ -6,14 +6,24 @@ apply plugin: 'kotlin-parcelize'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: "$project.rootDir/config/jacoco.gradle"
 
-kapt { 
+kapt {
     useBuildCache = true
 }
 
 android {
     compileSdkVersion AndroidConfig.compileSdkVersion
     buildToolsVersion AndroidConfig.buildToolsVersion
-
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+    }
     defaultConfig {
         applicationId "com.pratama.baseandroid"
         minSdkVersion AndroidConfig.minSdkVersion
@@ -71,6 +81,7 @@ dependencies {
     implementation(AndroidLib.room)
     implementation(AndroidLib.lottie)
     implementation(AndroidLib.menu)
+    implementation(AndroidLib.magicExoPlayer)
     implementation(AndroidLib.room_coroutine)
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$Versions.kotlin"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
