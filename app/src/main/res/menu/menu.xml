@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/news"
+        android:title="@string/news"
+        android:icon="@drawable/app_icon"
+        app:exb_color="#FF8888" />
+
+    <item
+        android:id="@+id/live"
+        android:title="@string/live"
+        android:icon="@drawable/live"
+        app:exb_color="@android:color/holo_red_light" />
+
+</menu>

@@ -12,6 +12,7 @@ import com.pratama.baseandroid.coreandroid.base.BaseFragmentBinding
 import com.pratama.baseandroid.coreandroid.extensions.toGone
 import com.pratama.baseandroid.coreandroid.extensions.toVisible
 import com.pratama.baseandroid.databinding.FragmentListNewsBinding
+import com.pratama.baseandroid.databinding.FragmentLiveBinding
 import com.pratama.baseandroid.domain.entity.News
 import com.pratama.baseandroid.domain.entity.toDto
 import com.pratama.baseandroid.ui.homepage.rvitem.NewsItem
@@ -29,51 +30,25 @@ import render.animations.Bounce
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsItem.NewsListener {
+class LiveFragment : BaseFragmentBinding<FragmentLiveBinding>(), NewsItem.NewsListener {
 
-    @Inject
-    lateinit var listNewsViewModel: ListNewsViewModel
 
-    private val listNewsAdapter = GroupAdapter<GroupieViewHolder>()
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentLiveBinding =
+        FragmentLiveBinding::inflate
 
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentListNewsBinding =
-        FragmentListNewsBinding::inflate
-
-    override fun setupView(binding: FragmentListNewsBinding) = with(binding) {
+    override fun setupView(binding: FragmentLiveBinding) = with(binding) {
         // setupRecyclerview
         rvListNews.layoutManager = LinearLayoutManager(requireActivity())
-        rvListNews.adapter = listNewsAdapter
 
         setListener(binding)
 
         callData()
 
-        listNewsViewModel.uiState().observe(viewLifecycleOwner, { state ->
-            when (state) {
-
-                is ListNewsViewModel.ListNewsState.Loading -> {
-                    animationView.toVisible()
-                    animationView.setGif(GifEnum.LOADING)
-                }
-
-                is ListNewsViewModel.ListNewsState.NewsLoaded -> {
-                    animationView.toGone()
-                    animationView.pauseAnimation()
-                    swipeRefreshLayout.isRefreshing = false
-
-                    ThreadInfoLogger.logThreadInfo("show news viewmodel")
-
-                    state.news.map {
-                        d { "news loaded -> ${it.title}" }
-                        listNewsAdapter.add(NewsItem(it, this@ListNewsFragment))
-                    }
-                }
-            }
-        })
         addMenu(binding)
+
     }
 
-    private fun addMenu(binding: FragmentListNewsBinding) {
+    private fun addMenu(binding: FragmentLiveBinding) {
         val menu = binding.expandableBottomBar.menu
         menu.add(
             MenuItemDescriptor.Builder(
@@ -93,35 +68,38 @@ class ListNewsFragment : BaseFragmentBinding<FragmentListNewsBinding>(), NewsIte
                 Color.RED
             ).build()
         )
-        menu.onItemSelectedListener = object :OnItemClickListener{
+
+        menu.onItemSelectedListener = object : OnItemClickListener {
             override fun invoke(v: View, menuItem: MenuItem, byUser: Boolean) {
-                if (menuItem.id == R.id.live) {
+                if (menuItem.id == R.id.news) {
                     findNavController().navigate(
-                        ListNewsFragmentDirections.actionListNewsFragmentToLiveFragment()
+                        LiveFragmentDirections.actionLiveFragmentToListNewsFragment()
                     )
                 }
             }
-
         }
+        menu.select(R.id.live)
     }
-
 
     override fun onNewsSelected(news: News) {
         FinestWebView.Builder(requireContext())
-            .setCustomAnimations(R.anim.exit_to_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left)
+            .setCustomAnimations(
+                R.anim.exit_to_right,
+                R.anim.exit_to_left,
+                R.anim.enter_from_right,
+                R.anim.exit_to_left
+            )
             .show(news.url)
     }
 
-    private fun setListener(binding: FragmentListNewsBinding) {
+    private fun setListener(binding: FragmentLiveBinding) {
         binding.swipeRefreshLayout.setOnRefreshListener {
-            listNewsAdapter.clear()
-
             callData()
         }
     }
 
     private fun callData() {
-        listNewsViewModel.getTopHeadlinesByCountry(country = "us", category = "technology")
+
     }
 
 }

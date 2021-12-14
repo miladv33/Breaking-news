@@ -26,6 +26,8 @@ object Versions {
     const val detekt = "1.15.0"
     const val mockk = "1.10.5"
     const val lottieVersion = "3.4.0"
+    const val menuVersion = "1.4.0"
+    const val magicExoPlayerVersion = "2.0.7"
 
 }
 
@@ -60,6 +62,8 @@ object AndroidLib {
     const val viewmodel_compiler =
         "androidx.lifecycle:lifecycle-compiler:${Versions.android_lifecycle}"
     const val timber = "com.github.ajalt:timberkt:1.5.1"
+    const val menu = "com.github.st235:expandablebottombar:${Versions.menuVersion}"
+    const val magicExoPlayer = "com.github.HamidrezaAmz:MagicalExoPlayer:${Versions.magicExoPlayerVersion}"
 }
 
 object AndroidTestLib {

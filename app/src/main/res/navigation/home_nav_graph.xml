@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_listNewsFragment_to_detailNewsFragment"
             app:destination="@id/detailNewsFragment" />
+        <action
+            android:id="@+id/action_listNewsFragment_to_liveFragment"
+            app:destination="@id/liveFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
@@ -23,5 +26,13 @@
             android:name="newsDto"
             app:argType="com.pratama.baseandroid.ui.dto.NewsDto"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/liveFragment"
+        android:name="com.pratama.baseandroid.ui.homepage.LiveFragment"
+        android:label="LiveFragment" >
+        <action
+            android:id="@+id/action_liveFragment_to_listNewsFragment"
+            app:destination="@id/listNewsFragment" />
     </fragment>
 </navigation>

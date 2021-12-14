@@ -70,6 +70,7 @@ dependencies {
 
     implementation(AndroidLib.room)
     implementation(AndroidLib.lottie)
+    implementation(AndroidLib.menu)
     implementation(AndroidLib.room_coroutine)
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$Versions.kotlin"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
